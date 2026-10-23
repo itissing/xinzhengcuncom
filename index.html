@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="zh-CN" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>新郑村 | 诗画新郑 · 灵秀仙游 - xinzhengcun.com</title>
+    <meta name="description" content="福建省莆田市仙游县新郑村官方导览，展现灵秀山水、文旦果香与古朴乡愁。">
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts: 引入书法与雅致字体 -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Ma+Shan+Zheng&family=Noto+Serif+SC:wght@300;400;600;700&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome 图标库 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        serif: ['"Noto Serif SC"', 'serif'],
+                        cursive: ['"Ma Shan Zheng"', 'cursive'],
+                    },
+                    colors: {
+                        ink: {
+                            50: '#f6f7f6',
+                            100: '#e3e7e3',
+                            800: '#2c3531',
+                            900: '#1a201c',
+                        },
+                        tea: {
+                            100: '#eaf2e8',
+                            500: '#6b8e23',
+                            800: '#3b5212',
+                        },
+                        amber: {
+                            100: '#fef3c7',
+                            600: '#d97706',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* 竖排文本样式（古风诗词） */
+        .writing-vertical {
+            writing-mode: vertical-rl;
+            text-orientation: upright;
+        }
+
+        /* 玻璃拟物古风卡片效果 */
+        .glass-card {
+            background: rgba(255, 255, 255, 0.75);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.4);
+        }
+
+        .glass-dark {
+            background: rgba(26, 32, 28, 0.65);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* 滚动淡入淡出动画过渡 */
+        .fade-in-section {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+            will-change: opacity, transform;
+        }
+
+        .fade-in-section.is-visible {
+            opacity: 1;
+            transform: none;
+        }
+
+        /* 墨韵淡入水纹背景效果 */
+        .ink-bg {
+            background-image: radial-gradient(circle at 50% 50%, rgba(255,255,255,0.8) 0%, rgba(246,247,246,0.95) 100%);
+        }
+    </style>
+</head>
+<body class="bg-ink-50 text-ink-800 font-serif antialiased selection:bg-tea-500 selection:text-white">
+
+    <!-- 顶部导航栏 Navigation -->
+    <header id="navbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 py-4 px-6 md:px-12">
+        <div class="max-w-7xl mx-auto flex justify-between items-center">
+            <!-- Logo / 域名 -->
+            <a href="#" class="flex items-center gap-3 group">
+                <span class="w-10 h-10 rounded-full bg-tea-800 text-white flex items-center justify-center font-cursive text-xl shadow-md transition transform group-hover:rotate-12">新</span>
+                <div>
+                    <span class="font-bold text-lg md:text-xl tracking-widest block text-ink-900 group-hover:text-tea-800 transition">新郑村</span>
+                    <span class="text-xs text-stone-500 tracking-wider">XINZHENG CUN</span>
+                </div>
+            </a>
+
+            <!-- 桌面菜单 -->
+            <nav class="hidden md:flex items-center space-x-8 text-sm tracking-widest font-medium">
+                <a href="#about" class="hover:text-tea-800 transition py-1 relative after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-tea-800 hover:after:w-full after:transition-all">印象新郑</a>
+                <a href="#scenery" class="hover:text-tea-800 transition py-1 relative after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-tea-800 hover:after:w-full after:transition-all">乡村风物</a>
+                <a href="#poetry" class="hover:text-tea-800 transition py-1 relative after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-tea-800 hover:after:w-full after:transition-all">诗意寄语</a>
+                <a href="#location" class="hover:text-tea-800 transition py-1 relative after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-tea-800 hover:after:w-full after:transition-all">游览指引</a>
+            </nav>
+
+            <!-- 域名徽章 -->
+            <div class="hidden lg:block text-xs font-mono px-3 py-1.5 rounded-full border border-stone-300 text-stone-600 bg-white/50 backdrop-blur-sm">
+                xinzhengcun.com
+            </div>
+
+            <!-- 移动端菜单按钮 -->
+            <button id="menuBtn" class="md:hidden text-ink-900 focus:outline-none p-2" aria-label="Toggle Menu">
+                <i class="fa-solid fa-bars text-xl"></i>
+            </button>
+        </div>
+
+        <!-- 移动端下拉菜单 -->
+        <div id="mobileMenu" class="hidden md:hidden absolute top-full left-0 right-0 glass-card border-t border-stone-200 py-6 px-8 shadow-xl flex flex-col space-y-4 text-center font-medium">
+            <a href="#about" class="mobile-link py-2 hover:text-tea-800">印象新郑</a>
+            <a href="#scenery" class="mobile-link py-2 hover:text-tea-800">乡村风物</a>
+            <a href="#poetry" class="mobile-link py-2 hover:text-tea-800">诗意寄语</a>
+            <a href="#location" class="mobile-link py-2 hover:text-tea-800">游览指引</a>
+            <div class="pt-2 text-xs text-stone-500 font-mono border-t border-stone-200">
+                域名：xinzhengcun.com
+            </div>
+        </div>
+    </header>
+
+    <!-- 1. 英雄区 (Hero Section) -->
+    <section class="relative h-screen flex items-center justify-center overflow-hidden">
+        <!-- 高清自然风光背景图 (来自 Unsplash 灵秀山水/乡村占位) -->
+        <div class="absolute inset-0 z-0">
+            <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=2000&q=80" 
+                 alt="仙游山水风光" 
+                 class="w-full h-full object-cover object-center transform scale-105 transition duration-10000 ease-out"
+                 id="heroBg">
+            <!-- 古风渐变遮罩 -->
+            <div class="absolute inset-0 bg-gradient-to-b from-black/40 via-black/20 to-ink-50"></div>
+        </div>
+
+        <!-- 英雄区主体内容 -->
+        <div class="relative z-10 text-center text-white px-4 max-w-4xl mx-auto flex flex-col items-center">
+            <div class="inline-block mb-4 px-4 py-1 rounded-full border border-white/30 bg-white/10 backdrop-blur-md text-xs md:text-sm tracking-widest uppercase">
+                福建 · 莆田 · 仙游
+            </div>
+            
+            <h1 class="font-cursive text-5xl md:text-7xl lg:text-8xl tracking-wider mb-6 text-shadow-lg drop-shadow-md">
+                诗画新郑 · 灵秀仙游
+            </h1>
+            
+            <p class="text-lg md:text-2xl font-light tracking-widest max-w-2xl leading-relaxed mb-8 opacity-90">
+                倚九鲤之灵气，拥木兰之润泽。<br class="hidden sm:block">
+                一片栖息心灵的清欢净土，一段流淌岁月的乡愁新篇。
+            </p>
+
+            <div class="flex flex-col sm:flex-row items-center gap-4">
+                <a href="#about" class="px-8 py-3 rounded-full bg-tea-800/90 hover:bg-tea-800 text-white font-medium tracking-widest transition shadow-lg hover:shadow-xl transform hover:-translate-y-0.5">
+                    走进新郑
+                </a>
+                <a href="#poetry" class="px-8 py-3 rounded-full border border-white/60 hover:bg-white/20 text-white font-medium tracking-widest backdrop-blur-sm transition">
+                    吟咏诗篇
+                </a>
+            </div>
+        </div>
+
+        <!-- 优雅向下滚动指引 -->
+        <a href="#about" class="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-10 text-white/80 hover:text-white flex flex-col items-center gap-2 transition animate-bounce">
+            <span class="text-xs tracking-widest font-light">向下探索</span>
+            <i class="fa-solid fa-chevron-down text-sm"></i>
+        </a>
+    </section>
+
+    <!-- 2. 印象新郑 (About Section) -->
+    <section id="about" class="py-24 px-6 md:px-12 max-w-7xl mx-auto fade-in-section">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+            
+            <!-- 左侧：文字介绍 -->
+            <div class="lg:col-span-7 space-y-6">
+                <div class="flex items-center gap-3">
+                    <span class="h-px w-10 bg-tea-800"></span>
+                    <span class="text-tea-800 font-semibold tracking-widest text-sm">ABOUT XINZHENG</span>
+                </div>
+                
+                <h2 class="text-3xl md:text-4xl font-bold tracking-wide text-ink-900 leading-snug">
+                    山麓隐烟翠，水畔有人家
+                </h2>
+                
+                <p class="text-stone-600 leading-relaxed text-base md:text-lg">
+                    新郑村位于福建省莆田市仙游县，坐落于灵秀的山水怀抱之中。这里不仅有闽中土地的厚重与丰饶，更氤氲着独特的江南乡村韵味。
+                </p>
+                
+                <p class="text-stone-600 leading-relaxed text-base md:text-lg">
+                    受木兰溪水系的滋养，新郑村四季常青、气候宜人。漫步村落间，既能领略到传统乡村的宁静与质朴，又能感受到现代乡村振兴带来的生机与活力。无论是满园飘香的度尾文旦柚，还是古香古色的民居宅院，都诉说着这片土地的深厚底蕴。
+                </p>
+
+                <!-- 特色指标数字 -->
+                <div class="grid grid-cols-3 gap-6 pt-6 border-t border-stone-200">
+                    <div>
+                        <div class="font-cursive text-3xl md:text-4xl text-tea-800">仙作</div>
+                        <div class="text-xs text-stone-500 mt-1">文化底蕴</div>
+                    </div>
+                    <div>
+                        <div class="font-cursive text-3xl md:text-4xl text-tea-800">柚香</div>
+                        <div class="text-xs text-stone-500 mt-1">风物名片</div>
+                    </div>
+                    <div>
+                        <div class="font-cursive text-3xl md:text-4xl text-tea-800">宜居</div>
+                        <div class="text-xs text-stone-500 mt-1">生态乡村</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 右侧：图片组合与古风框架 -->
+            <div class="lg:col-span-5 relative">
+                <div class="relative z-10 rounded-2xl overflow-hidden shadow-2xl border-4 border-white">
+                    <img src="https://images.unsplash.com/photo-1599707367072-cd6ada2bc375?auto=format&fit=crop&w=1000&q=80" 
+                         alt="福建乡村风貌" 
+                         class="w-full h-96 object-cover hover:scale-105 transition duration-700">
+                </div>
+                <!-- 装饰性背景框 -->
+                <div class="absolute -bottom-6 -right-6 w-full h-full border-2 border-tea-800/30 rounded-2xl -z-0 hidden sm:block"></div>
+                
+                <!-- 叠加挂件卡片 -->
+                <div class="absolute -bottom-8 -left-8 glass-card p-4 rounded-xl shadow-lg border border-white/80 max-w-xs hidden sm:flex items-center gap-4 z-20">
+                    <div class="w-12 h-12 rounded-full bg-tea-100 text-tea-800 flex items-center justify-center flex-shrink-0">
+                        <i class="fa-solid fa-leaf text-xl"></i>
+                    </div>
+                    <div>
+                        <div class="font-semibold text-sm text-ink-900">绿色生态村落</div>
+                        <div class="text-xs text-stone-500">水碧山青，四季如画</div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- 3. 乡村风物 / 四季诗篇 (Scenery Cards) -->
+    <section id="scenery" class="py-24 bg-stone-100/60 relative fade-in-section">
+        <div class="max-w-7xl mx-auto px-6 md:px-12">
+            
+            <!-- 标题区 -->
+            <div class="text-center max-w-2xl mx-auto mb-16">
+                <span class="text-tea-800 font-semibold tracking-widest text-sm uppercase block mb-2">SCENERY & CULTURE</span>
+                <h2 class="text-3xl md:text-4xl font-bold text-ink-900">新郑风物 · 岁月留痕</h2>
+                <div class="w-12 h-0.5 bg-tea-800 mx-auto mt-4 mb-4"></div>
+                <p class="text-stone-600 text-sm md:text-base">一砖一瓦皆历史，一草一木总关情。探索新郑村别具一格的自然与人文景观。</p>
+            </div>
+
+            <!-- 卡片网格 -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                
+                <!-- 卡片 1 -->
+                <div class="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 group flex flex-col">
+                    <div class="relative h-52 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=600&q=80" 
+                             alt="山水灵秀" 
+                             class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                        <span class="absolute top-4 left-4 bg-ink-900/60 backdrop-blur-md text-white text-xs px-3 py-1 rounded-full">自然山水</span>
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col justify-between">
+                        <div>
+                            <h3 class="text-xl font-bold text-ink-900 mb-2 group-hover:text-tea-800 transition">山水灵秀</h3>
+                            <p class="text-stone-600 text-sm leading-relaxed">倚靠仙游连绵群山，清泉环绕，四季晨昏各具神韵，宛如水墨画卷。</p>
+                        </div>
+                        <div class="mt-6 pt-4 border-t border-stone-100 text-xs text-stone-400 font-mono">01 / LANDSCAPE</div>
+                    </div>
+                </div>
+
+                <!-- 卡片 2 -->
+                <div class="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 group flex flex-col">
+                    <div class="relative h-52 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1618160702438-9b02ab6515c9?auto=format&fit=crop&w=600&q=80" 
+                             alt="文旦果香" 
+                             class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                        <span class="absolute top-4 left-4 bg-amber-600/80 backdrop-blur-md text-white text-xs px-3 py-1 rounded-full">特色名产</span>
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col justify-between">
+                        <div>
+                            <h3 class="text-xl font-bold text-ink-900 mb-2 group-hover:text-tea-800 transition">柚黄果香</h3>
+                            <p class="text-stone-600 text-sm leading-relaxed">仙游特产文旦柚金黄满枝，果肉多汁甘甜，是这片土地赠予岁月的甜美礼赞。</p>
+                        </div>
+                        <div class="mt-6 pt-4 border-t border-stone-100 text-xs text-stone-400 font-mono">02 / HARVEST</div>
+                    </div>
+                </div>
+
+                <!-- 卡片 3 -->
+                <div class="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 group flex flex-col">
+                    <div class="relative h-52 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=600&q=80" 
+                             alt="传统民居" 
+                             class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                        <span class="absolute top-4 left-4 bg-ink-900/60 backdrop-blur-md text-white text-xs px-3 py-1 rounded-full">古朴建筑</span>
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col justify-between">
+                        <div>
+                            <h3 class="text-xl font-bold text-ink-900 mb-2 group-hover:text-tea-800 transition">红砖古厝</h3>
+                            <p class="text-stone-600 text-sm leading-relaxed">承载着莆仙传统的建筑风貌，飞檐翘角、红砖白墙，定格光影里的乡村温情。</p>
+                        </div>
+                        <div class="mt-6 pt-4 border-t border-stone-100 text-xs text-stone-400 font-mono">03 / ARCHITECTURE</div>
+                    </div>
+                </div>
+
+                <!-- 卡片 4 -->
+                <div class="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 group flex flex-col">
+                    <div class="relative h-52 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=600&q=80" 
+                             alt="乡愁岁月" 
+                             class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                        <span class="absolute top-4 left-4 bg-ink-900/60 backdrop-blur-md text-white text-xs px-3 py-1 rounded-full">田园生活</span>
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col justify-between">
+                        <div>
+                            <h3 class="text-xl font-bold text-ink-900 mb-2 group-hover:text-tea-800 transition">乡愁烟火</h3>
+                            <p class="text-stone-600 text-sm leading-relaxed">日出而作，日落而息。炊烟袅袅升起之处，是人心深处最温暖的归宿。</p>
+                        </div>
+                        <div class="mt-6 pt-4 border-t border-stone-100 text-xs text-stone-400 font-mono">04 / MEMORY</div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. 诗意寄语 / 诗词赏析 (Poetry Section) -->
+    <section id="poetry" class="py-28 relative bg-ink-900 text-white overflow-hidden fade-in-section">
+        <!-- 暗色古风水墨背景纹理 -->
+        <div class="absolute inset-0 opacity-20 pointer-events-none">
+            <img src="https://images.unsplash.com/photo-1579783902614-a3fb3927b675?auto=format&fit=crop&w=1600&q=80" 
+                 alt="水墨背景" 
+                 class="w-full h-full object-cover">
+        </div>
+
+        <div class="max-w-5xl mx-auto px-6 relative z-10 flex flex-col items-center text-center">
+            
+            <i class="fa-solid fa-quote-left text-4xl text-tea-500/40 mb-8"></i>
+
+            <!-- 竖排与横排结合的诗意表达 -->
+            <div class="mb-10">
+                <p class="font-cursive text-3xl md:text-5xl leading-relaxed text-amber-100 tracking-widest mb-6">
+                    仙游山下水萦回，新郑村前花自开。<br>
+                    莫道江南风景好，此间清气胜蓬莱。
+                </p>
+                <div class="w-16 h-0.5 bg-tea-500/50 mx-auto my-6"></div>
+                <p class="text-stone-300 font-light text-base md:text-lg max-w-2xl leading-relaxed">
+                    在岁月静好的新郑，寻一处闲暇，听风吟鸟唱，看云卷云舒。<br>
+                    这里不仅是一方地理名称，更是每一个游子心中的诗与远方。
+                </p>
+            </div>
+
+            <!-- 印章样式 -->
+            <div class="w-12 h-12 rounded-lg border-2 border-red-700 text-red-600 font-cursive text-lg flex items-center justify-center bg-red-950/30 select-none">
+                新郑
+            </div>
+
+        </div>
+    </section>
+
+    <!-- 5. 游览指引 / 访问地图 (Location & Contact Section) -->
+    <section id="location" class="py-24 px-6 md:px-12 max-w-7xl mx-auto fade-in-section">
+        <div class="glass-card rounded-3xl p-8 md:p-12 shadow-xl border border-stone-200">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                
+                <div>
+                    <span class="text-tea-800 font-semibold tracking-widest text-sm uppercase block mb-2">LOCATION & VISIT</span>
+                    <h2 class="text-3xl font-bold text-ink-900 mb-6">打卡新郑 · 寻梦仙游</h2>
+                    
+                    <div class="space-y-4 text-stone-600">
+                        <div class="flex items-start gap-4">
+                            <div class="w-8 h-8 rounded-full bg-tea-100 text-tea-800 flex items-center justify-center flex-shrink-0 mt-1">
+                                <i class="fa-solid fa-location-dot"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-ink-900">地理位置</h4>
+                                <p class="text-sm">福建省莆田市仙游县新郑村</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start gap-4">
+                            <div class="w-8 h-8 rounded-full bg-tea-100 text-tea-800 flex items-center justify-center flex-shrink-0 mt-1">
+                                <i class="fa-solid fa-compass"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-ink-900">周边名胜</h4>
+                                <p class="text-sm">邻近九鲤湖景区、麦斜岩、菜溪岩等仙游著名景点。</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start gap-4">
+                            <div class="w-8 h-8 rounded-full bg-tea-100 text-tea-800 flex items-center justify-center flex-shrink-0 mt-1">
+                                <i class="fa-solid fa-globe"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-ink-900">独立网址</h4>
+                                <p class="text-sm font-mono text-tea-800">https://xinzhengcun.com</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mt-8 pt-6 border-t border-stone-200/80 flex items-center gap-4">
+                        <a href="https://maps.baidu.com" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-6 py-2.5 rounded-full bg-ink-900 text-white text-sm hover:bg-tea-800 transition shadow">
+                            <i class="fa-solid fa-map"></i> 地图导航
+                        </a>
+                        <span class="text-xs text-stone-400">欢迎各界朋友莅临参观交流</span>
+                    </div>
+                </div>
+
+                <!-- 模拟古风地图/风光卡片展示 -->
+                <div class="relative rounded-2xl overflow-hidden h-72 lg:h-80 shadow-inner bg-stone-200">
+                    <img src="https://images.unsplash.com/photo-1508873696983-2df515122519?auto=format&fit=crop&w=1000&q=80" 
+                         alt="仙游乡村航拍风光" 
+                         class="w-full h-full object-cover">
+                    <div class="absolute inset-0 bg-ink-900/30 flex items-center justify-center">
+                        <div class="text-center text-white p-6 glass-dark rounded-2xl">
+                            <i class="fa-solid fa-mountain-sun text-3xl text-amber-100 mb-2"></i>
+                            <div class="font-cursive text-2xl tracking-wider">灵秀仙游 · 诗意新郑</div>
+                            <div class="text-xs text-stone-300 mt-1">xinzhengcun.com</div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- 6. 页脚 Footer -->
+    <footer class="bg-ink-900 text-stone-400 py-12 px-6 border-t border-stone-800">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6 text-center md:text-left">
+            
+            <div>
+                <div class="flex items-center justify-center md:justify-start gap-2 text-white font-semibold text-lg mb-1">
+                    <span class="font-cursive text-xl text-tea-500">新郑村</span>
+                    <span class="text-xs text-stone-500 font-normal">| 福建省莆田市仙游县</span>
+                </div>
+                <p class="text-xs text-stone-500">
+                    © <span id="year"></span> xinzhengcun.com 保留所有权利。
+                </p>
+            </div>
+
+            <!-- GitHub Pages 托管温馨提示与链接 -->
+            <div class="flex flex-col sm:flex-row items-center gap-4 text-xs">
+                <span class="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-stone-800 border border-stone-700 text-stone-300">
+                    <i class="fa-brands fa-github text-sm"></i>
+                    托管于 GitHub Pages
+                </span>
+                <a href="#" class="hover:text-white transition">返回顶部 <i class="fa-solid fa-arrow-up text-xs ml-1"></i></a>
+            </div>
+
+        </div>
+    </footer>
+
+    <!-- JS 逻辑处理 -->
+    <script>
+        // 1. 设置页脚年份
+        document.getElementById('year').textContent = new Date().getFullYear();
+
+        // 2. 移动端菜单切换
+        const menuBtn = document.getElementById('menuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+        const mobileLinks = document.querySelectorAll('.mobile-link');
+
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+
+        // 3. 导航栏滚动阴影与背景渐变
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.add('glass-card', 'shadow-md', 'py-3');
+                navbar.classList.remove('py-4');
+            } else {
+                navbar.classList.remove('glass-card', 'shadow-md');
+                navbar.classList.add('py-4');
+            }
+        });
+
+        // 4. 滚动淡入动画 (Intersection Observer)
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.15
+        };
+
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('is-visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in-section').forEach(section => {
+            observer.observe(section);
+        });
+
+        // 5. 英雄区背景微视差效果
+        const heroBg = document.getElementById('heroBg');
+        window.addEventListener('scroll', () => {
+            const scrollPos = window.scrollY;
+            if (scrollPos < window.innerHeight) {
+                heroBg.style.transform = `scale(1.05) translateY(${scrollPos * 0.2}px)`;
+            }
+        });
+    </script>
+</body>
+</html>
